@@ -1,0 +1,36 @@
+
+The container build fails when adding the features
+
+##################################################
+	"features": {
+		// ZSH without OMZ
+		"ghcr.io/devcontainers/features/common-utils:2": {
+			"installZsh": "true",
+			"configureZshAsDefaultShell": "true",
+			"installOhMyZsh": "false",
+			"installOhMyZshConfig": "false",
+			"username": "vscode",
+			"userUid": "1000",
+			"userGid": "1000",
+			"upgradePackages": "true"
+		}
+
+##################################################
+RUN --mount=type=bind,from=dev_containers_feature_content_source,source=common-utils_0,target=/tmp/build-features-src/common-utils_0 \
+    cp -ar /tmp/build-features-src/common-utils_0 /tmp/dev-container-features \
+&& chmod -R 0755 /tmp/dev-container-features/common-utils_0 \
+&& cd /tmp/dev-container-features/common-utils_0 \
+&& chmod +x ./devcontainer-features-install.sh \
+&& ./devcontainer-features-install.sh \
+&& rm -rf /tmp/dev-container-features/common-utils_0
+
+===========================================================================
+Feature       : Common Utilities
+Description   : Installs a set of common command line utilities, Oh My Zsh!, and sets up a non-root user.
+Id            : ghcr.io/devcontainers/features/common-utils
+Version       : 2.5.2
+Documentation : https://github.com/devcontainers/features/tree/main/src/common-utils
+Options       :
+INSTALLZSH="true"
+CONFIGUREZSHASDEFAULTSHELL="true"
+INSTALLOHMYZSH="false"
