@@ -47,7 +47,7 @@ training_config {
       amsgrad: false
     }
   }
-  pretrain_model_path: "EXPERIMENT_DIR/pretrained_resnet18/pretrained_object_detection_vresnet18/resnet_18.hdf5"
+  pretrain_model_path: "/workspace/tao-experiments/yolo_v4/pretrained_resnet18/pretrained_object_detection_vresnet18/resnet_18.hdf5"
   model_ema: true
 }
 eval_config {
