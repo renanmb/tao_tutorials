@@ -30,6 +30,11 @@
 
 	// 4. Features to add to the Dev Container. More info: https://containers.dev/implementors/features.
 	"features": {
+        // Docker in Docker
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {
+        "version": "latest",
+        "moby": true
+        },
 		// ZSH without OMZ -- This causes an error
 		"ghcr.io/devcontainers/features/common-utils:2": {
 			"installZsh": "true",
