@@ -1,0 +1,91 @@
+
+The following commands:
+
+!tao model yolo_v4 dataset_convert -d $SPECS_DIR/yolo_v4_tfrecords_kitti_train.txt -o $DATA_DOWNLOAD_DIR/yolo_v4/tfrecords/train -r $USER_EXPERIMENT_DIR/
+
+!tao model yolo_v4 dataset_convert -d $SPECS_DIR/yolo_v4_tfrecords_kitti_val.txt -o $DATA_DOWNLOAD_DIR/yolo_v4/tfrecords/val -r $USER_EXPERIMENT_DIR/
+
+Are giving the following error:
+
+Docker instantiation failed with error: 500 Server Error: Internal Server Error ("could not select device driver "" with capabilities: [[gpu]]")
+
+
+
+##############################################################################
+##############################################################################
+
+env: USER_EXPERIMENT_DIR=/workspace/tao-experiments/yolo_v4
+env: DATA_DOWNLOAD_DIR=/workspace/tao-experiments/data
+env: LOCAL_PROJECT_DIR=YOUR_LOCAL_PROJECT_DIR_PATH
+env: SPECS_DIR=/workspace/tao-experiments/yolo_v4/specs
+total 32
+-rwxrwxrwx 1 root   root   2488 Nov 30 01:49 yolo_v4_retrain_resnet18_kitti.txt
+-rwxrwxrwx 1 root   root   2477 Nov 30 01:49 yolo_v4_retrain_resnet18_kitti_qat.txt
+-rwxrwxrwx 1 root   root   2600 Nov 30 01:49 yolo_v4_retrain_resnet18_kitti_16bit_grayscale.txt
+-rwxrwxrwx 1 root   root    330 Nov 30 01:49 yolo_v4_tfrecords_kitti_train.txt
+-rwxrwxrwx 1 root   root   2457 Nov 30 01:49 yolo_v4_retrain_resnet18_kitti_seq.txt
+-rwxrwxrwx 1 root   root    320 Nov 30 01:49 yolo_v4_tfrecords_kitti_val.txt
+-rwxrwxrwx 1 root   root    346 Nov 30 01:49 yolo_v4_tfrecords_kitti_train_16bit_grayscale.txt
+-rwxrwxrwx 1 root   root    336 Nov 30 01:49 yolo_v4_tfrecords_kitti_val_16bit_grayscale.txt
+-rwxrwxrwx 1 root   root   2490 Nov 30 01:49 yolo_v4_train_resnet18_kitti_qat.txt
+-rwxrwxrwx 1 root   root   2508 Nov 30 01:49 yolo_v4_train_resnet18_kitti_16bit_grayscale.txt
+-rwxrwxrwx 1 root   root   2478 Nov 30 01:49 yolo_v4_train_resnet18_kitti_seq.txt
+-rwxrwxrwx 1 vscode vscode 2529 Dec  4 04:18 yolo_v4_train_resnet18_kitti.txt
+{
+    "Mounts": [
+        {
+            "source": "YOUR_LOCAL_PROJECT_DIR_PATH",
+            "destination": "/workspace/tao-experiments"
+        },
+        {
+            "source": "/workspaces/tao_tutorials/notebooks/tao_launcher_starter_kit/yolo_v4/specs",
+            "destination": "/workspace/tao-experiments/yolo_v4/specs"
+        }
+    ]
+}
+Defaulting to user installation because normal site-packages is not writeable
+Looking in indexes: https://pypi.org/simple, https://pypi.ngc.nvidia.com
+Requirement already satisfied: nvidia-tao in /home/vscode/.local/lib/python3.10/site-packages (5.5.1)
+Requirement already satisfied: certifi>=2022.12.07 in /usr/local/lib/python3.10/dist-packages (from nvidia-tao) (2024.2.2)
+Requirement already satisfied: chardet==3.0.4 in /home/vscode/.local/lib/python3.10/site-packages (from nvidia-tao) (3.0.4)
+Requirement already satisfied: docker-pycreds==0.4.0 in /usr/local/lib/python3.10/dist-packages (from nvidia-tao) (0.4.0)
+Requirement already satisfied: docker==4.3.1 in /home/vscode/.local/lib/python3.10/site-packages (from nvidia-tao) (4.3.1)
+Requirement already satisfied: idna==2.10 in /home/vscode/.local/lib/python3.10/site-packages (from nvidia-tao) (2.10)
+Requirement already satisfied: requests==2.31.0 in /usr/local/lib/python3.10/dist-packages (from nvidia-tao) (2.31.0)
+Requirement already satisfied: rich<14.0,>=13.6.0 in /home/vscode/.local/lib/python3.10/site-packages (from nvidia-tao) (13.9.4)
+Requirement already satisfied: six==1.15.0 in /home/vscode/.local/lib/python3.10/site-packages (from nvidia-tao) (1.15.0)
+Requirement already satisfied: tabulate<1.0,>=0.9.0 in /usr/local/lib/python3.10/dist-packages (from nvidia-tao) (0.9.0)
+Requirement already satisfied: urllib3<2.0.0,>=1.26.15 in /usr/local/lib/python3.10/dist-packages (from nvidia-tao) (1.26.18)
+Requirement already satisfied: websocket-client==0.57.0 in /home/vscode/.local/lib/python3.10/site-packages (from nvidia-tao) (0.57.0)
+Requirement already satisfied: charset-normalizer<4,>=2 in /usr/local/lib/python3.10/dist-packages (from requests==2.31.0->nvidia-tao) (3.3.2)
+Requirement already satisfied: markdown-it-py>=2.2.0 in /usr/local/lib/python3.10/dist-packages (from rich<14.0,>=13.6.0->nvidia-tao) (3.0.0)
+Requirement already satisfied: pygments<3.0.0,>=2.13.0 in /usr/local/lib/python3.10/dist-packages (from rich<14.0,>=13.6.0->nvidia-tao) (2.17.2)
+Requirement already satisfied: typing-extensions<5.0,>=4.0.0 in /usr/local/lib/python3.10/dist-packages (from rich<14.0,>=13.6.0->nvidia-tao) (4.10.0)
+Requirement already satisfied: mdurl~=0.1 in /usr/local/lib/python3.10/dist-packages (from markdown-it-py>=2.2.0->rich<14.0,>=13.6.0->nvidia-tao) (0.1.2)
+
+[notice] A new release of pip is available: 24.2 -> 24.3.1
+[notice] To update, run: pip install --upgrade pip
+Configuration of the TAO Toolkit Instance
+task_group: ['model', 'dataset', 'deploy']
+format_version: 3.0
+toolkit_version: 5.5.0
+published_date: 08/26/2024
+image archive already downloaded
+label archive already downloaded
+Found Image zip file.
+Found Labels zip file.
+images OK
+labels OK
+Number of images in the train/val set. 7481
+Number of labels in the train/val set. 7481
+Number of images in the test set. 7518
+2024-12-04 05:35:28,365 [TAO Toolkit] [INFO] root 160: Registry: ['nvcr.io']
+2024-12-04 05:35:28,450 [TAO Toolkit] [INFO] nvidia_tao_cli.components.instance_handler.local_instance 360: Running command in container: nvcr.io/nvidia/tao/tao-toolkit:5.0.0-tf1.15.5
+2024-12-04 05:35:28,475 [TAO Toolkit] [WARNING] nvidia_tao_cli.components.docker_handler.docker_handler 288: 
+Docker will run the commands as root. If you would like to retain your
+local host permissions, please add the "user":"UID:GID" in the
+DockerOptions portion of the "/home/vscode/.tao_mounts.json" file. You can obtain your
+users UID and GID by using the "id -u" and "id -g" commands on the
+terminal.
+2024-12-04 05:35:28,475 [TAO Toolkit] [INFO] nvidia_tao_cli.components.docker_handler.docker_handler 301: Printing tty value True
+Docker instantiation failed with error: 500 Server Error: Internal Server Error ("could not select device driver "" with capabilities: [[gpu]]")
